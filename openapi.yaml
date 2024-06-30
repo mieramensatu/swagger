@@ -1,0 +1,276 @@
+openapi: 3.0.0
+info:
+  title: Tugas Besar
+  version: 1.0.0
+servers:
+  - url: https://130.162.195.228
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: auth
+  - name: tasks
+  - name: roles
+paths:
+  /mhs714220007/login:
+    post:
+      tags:
+        - auth
+      summary: Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                username: wisnu
+                password: wisnu
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/register:
+    post:
+      tags:
+        - auth
+      summary: Register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                nama: wisnu
+                username: wisnu
+                password: wisnu
+                email: wisnu@example.com
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/getme:
+    get:
+      tags:
+        - auth
+      summary: getme
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: LOGIN
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTk2NzM0MzUsImlkX3VzZXIiOjc2LCJpZF9yb2xlIjoyfQ.udUrjyHPKfRAW35N-Bcnj3MrMuj960orjj6i1hmb1yI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/tasks:
+    get:
+      tags:
+        - tasks
+      summary: tasks
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: LOGIN
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTk2NzM0MzUsImlkX3VzZXIiOjc2LCJpZF9yb2xlIjoyfQ.udUrjyHPKfRAW35N-Bcnj3MrMuj960orjj6i1hmb1yI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/task/get:
+    get:
+      tags:
+        - tasks
+      summary: Getbyid_task
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: LOGIN
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTk2NzM0MzUsImlkX3VzZXIiOjc2LCJpZF9yb2xlIjoyfQ.udUrjyHPKfRAW35N-Bcnj3MrMuj960orjj6i1hmb1yI
+        - name: id_task
+          in: query
+          schema:
+            type: integer
+          example: '35'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/task/insert:
+    post:
+      tags:
+        - tasks
+      summary: task insert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                judul: test tugas wisnu512
+                deskripsi: Deskripsi wisnu12
+                due_date: '2024-10-10'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: LOGIN
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTk2NzM0MzUsImlkX3VzZXIiOjc2LCJpZF9yb2xlIjoyfQ.udUrjyHPKfRAW35N-Bcnj3MrMuj960orjj6i1hmb1yI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/task/update/:
+    put:
+      tags:
+        - tasks
+      summary: update task
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                judul: Task Baru Diupdate1111
+                deskripsi: Deskripsi task baru diupdate1111
+                due_date: '2024-07-20'
+                completed: 1
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: LOGIN
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTk2NzM0MzUsImlkX3VzZXIiOjc2LCJpZF9yb2xlIjoyfQ.udUrjyHPKfRAW35N-Bcnj3MrMuj960orjj6i1hmb1yI
+        - name: id_task
+          in: query
+          schema:
+            type: integer
+          example: '61'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/task/delete:
+    delete:
+      tags:
+        - tasks
+      summary: delete task
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: LOGIN
+          in: header
+          schema:
+            type: string
+          example: >-
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MTk2NzM0MzUsImlkX3VzZXIiOjc2LCJpZF9yb2xlIjoyfQ.udUrjyHPKfRAW35N-Bcnj3MrMuj960orjj6i1hmb1yI
+        - name: id_task
+          in: query
+          schema:
+            type: integer
+          example: '61'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/roles:
+    get:
+      tags:
+        - roles
+      summary: roles
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/role/get/1:
+    get:
+      tags:
+        - roles
+      summary: get role by id
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/role/insert:
+    post:
+      tags:
+        - roles
+      summary: role insert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                role_name: Admin
+                role_description: Administrator with full access
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/role/update/5:
+    put:
+      tags:
+        - roles
+      summary: role update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                role_name: User
+                role_description: Regular user with limited access
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /mhs714220007/role/delete/5:
+    delete:
+      tags:
+        - roles
+      summary: role delete
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
